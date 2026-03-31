@@ -1,3 +1,7 @@
+import sys
+import os
+import unicodedata as uni
+
 class NoeudBinaire:
     """
     Classe NoeudBinaire
@@ -13,3 +17,4 @@ class NoeudBinaire:
         self.valeur = valeur
         self.gauche = gauche
         self.droit = droit
+        NoeudBinaire.nb_NoeudBinaire += 1
