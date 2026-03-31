@@ -1,5 +1,7 @@
 import sys
 import os
+from typing import Optional
+
 import unicodedata as uni
 
 class NoeudBinaire:
@@ -13,7 +15,7 @@ class NoeudBinaire:
     """
     nb_NoeudBinaire = 0
 
-    def __init__(self, valeur = None, gauche = None, droit = None):
+    def __init__(self, valeur : int | None = None, gauche : 'NoeudBinaire | None' = None, droit : 'NoeudBinaire | None' = None):
         self.valeur = valeur
         self.gauche = gauche
         self.droit = droit
