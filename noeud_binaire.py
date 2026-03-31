@@ -20,3 +20,22 @@ class NoeudBinaire:
         self.gauche = gauche
         self.droit = droit
         NoeudBinaire.nb_NoeudBinaire += 1
+
+    def get_valeur(self):
+        return self.valeur
+
+    def get_gauche(self):
+        return self.gauche
+
+    def get_droit(self):
+        return self.droit
+
+    def set_valeur(self, valeur):
+        self.valeur = valeur
+
+    def set_gauche(self, gauche):
+        self.gauche = gauche
+
+    def set_droit(self, droit):
+        self.droit = droit
+
