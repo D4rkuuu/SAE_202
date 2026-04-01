@@ -5,7 +5,7 @@ import noeud_binaire as nb
 
 class Huffman(nb):
     def __init__(self, gauche, droit):
-        """(s) est la chaîne de caratère et (es) est 
+        """(s) est la chaîne de caractère et (es) est
         le poids de la concaténation (s), 
         - valeur devient un tuple 
         - (s) position 0 plus le calcule de la concaténation 
@@ -16,4 +16,4 @@ class Huffman(nb):
         
         super().__init_((s, es), gauche, droit)
         
-       
+    def
