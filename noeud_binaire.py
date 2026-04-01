@@ -16,7 +16,7 @@ class NoeudBinaire:
     nb_NoeudBinaire = 0
 
 # Constructeur
-    def __init__(self, valeur : str | None = None, gauche : 'NoeudBinaire | None' = None, droit : 'NoeudBinaire | None' = None):
+    def __init__(self, valeur : int | None = None, gauche : 'NoeudBinaire | None' = None, droit : 'NoeudBinaire | None' = None):
         self.__valeur = valeur
         self.__gauche = gauche
         self.__droit = droit
@@ -58,7 +58,6 @@ class NoeudBinaire:
         if self.__valeur and self.__gauche and self.__droit is  None:
             return True
         return False
-
     def hauteur(self,):
         if self.arbre_vide():
             return 0
