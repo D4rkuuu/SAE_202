@@ -58,3 +58,10 @@ class NoeudBinaire:
         if self.__valeur and self.__gauche and self.__droit is  None:
             return True
         return False
+
+    def hauteur(self,noeud):
+        if self.arbre_vide():
+            return 0
+        return 1 + max(self.hauteur(noeud.__gauche), self.hauteur(noeud.droite))
+
+
