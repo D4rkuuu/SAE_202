@@ -58,3 +58,4 @@ class NoeudBinaire:
         if self.__valeur and self.__gauche and self.__droit is  None:
             return True
         return False
+    #Test
