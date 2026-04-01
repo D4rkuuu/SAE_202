@@ -59,9 +59,18 @@ class NoeudBinaire:
             return True
         return False
 
-    def hauteur(self,noeud):
+    def hauteur(self, ):
         if self.arbre_vide():
             return 0
-        return 1 + max(self.hauteur(noeud.__gauche), self.hauteur(noeud.droite))
+        if self.__gauche is not None:  # Si le sous arbre gauche n'est pas vide
+            h_gauche = self.__gauche.hauteur()  # Alors, réutiliser la méthode hauteur sur le sous arbre gauche
+        else:
+            h_gauche = 1
+        if self.__droit is not None:  # Si le sous arbre droit n'est pas vide
+            h_droit = self.__droit.arbre_vide()  # Alors, réutiliser la méthode hauteur sur le sous arbre droit
+        else:
+            h_droit = 1
+        return 1 + max(h_gauche,
+                       h_droit)  # Rajoute 1(la racine) à la hauteur du sous arbre ayant la plus grande hauteur
 
 
