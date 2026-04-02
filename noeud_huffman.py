@@ -15,6 +15,16 @@ class Huffman(nb.NoeudBinaire):
         self.s = s
         self.es = es
 
+    def get_s(self):
+        return self.s
+    def get_es(self):
+        return self.es
+    def set_s(self, s):
+        self.s = s
+    def set_es(self, es):
+        self.es = es
+
+
     @staticmethod
     def compter_lettres(texte):
         compteur_lettres = {}

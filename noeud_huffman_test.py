@@ -1,6 +1,6 @@
 import noeud_huffman as nh
 
-texte = "akramlebgdu94@"
+texte = "Ô rage ! ô désespoir ! ô vieillesse ennemie ! N’ai-je donc tant vécu que pour cette infamie ? Le Cid, Corneille Acte I, scène 4"
 
 resultat = nh.Huffman.compter_lettres(texte)
 
@@ -27,5 +27,4 @@ racine = nh.Huffman.lettres_noeuds(noeuds)
 codes = racine.codes_huffman()
 for lettre, code in codes.items():
     print(f"'{lettre}' -> {code}")
-
 
