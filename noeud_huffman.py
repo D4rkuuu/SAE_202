@@ -11,7 +11,7 @@ class Huffman(nb):
         - valeur devient un tuple 
         - (s) position 0 plus le calcule de la concaténation 
         - (es) position 1 avec le calcule du poids totale."""
-        super().__init_((s,es), gauche, droit)
+        super().__init__((s,es), gauche, droit)
         self.s = s
         self.es = es
 
