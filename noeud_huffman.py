@@ -24,5 +24,23 @@ class Huffman(nb.NoeudBinaire):
 
         return compteur_lettres
 
-    def Arbre_huffman(self,s,es,gauche,droit):
+    @staticmethod
+    def lettres_noeuds(noeuds):
+        while len(noeuds) > 1:
+            noeuds.sort(key=lambda x: x.es)
 
+            gauche = noeuds.pop(0)
+            droit = noeuds.pop(0)
+
+            nouveau = Huffman(
+                gauche.s + droit.s,gauche.es + droit.es, gauche,droit
+            )
+
+            noeuds.append(nouveau)
+
+        return noeuds[0]
+
+    def __repr__(self):
+        return f"({self.s}, {self.es})"
+
+    #def arbre_huffman(self,noeuds):
