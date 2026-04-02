@@ -3,3 +3,4 @@
 /input
 /.idea
 *__pycache__/
+*.pyc
