@@ -1,29 +1,19 @@
 import noeud_huffman as nh
 
+texte = "bonjourbonsoir"
 
-texte = "Ôrage ! ô désespoir ! ô vieillesse ennemie ! N’ai-je donc tant vécu que pour cette infamie ? Le Cid, Corneille Acte I, scène 4"
+# Compte les lettres et renvoie une liste de tuples triée
+liste_tuples = nh.Huffman.compter_lettres(texte)
+print (liste_tuples)
 
-resultat = nh.Huffman.compter_lettres(texte)
+# Construit l'arbre
+racine = nh.Huffman.lettres_noeuds(liste_tuples)
+print (racine)
 
-print(resultat)
-
-noeud = []
-
-for lettre, poids in resultat.items():
-    noeud.append(nh.Huffman(lettre, poids, None, None))
-
-arbre = nh.Huffman.lettres_noeuds(noeud)
-
-print(noeud)
-print(arbre)
-
-# Pipeline complet
-compteur = nh.Huffman.compter_lettres(texte)
-noeuds = [nh.Huffman(lettre, freq) for lettre, freq in compteur.items()]
-racine = nh.Huffman.lettres_noeuds(noeuds)
-
-# Générer les codes
+# Génère les codes pour l'encodage
 codes = racine.codes_huffman()
-for lettre, code in codes.items():
-    print(f"'{lettre}' -> {code}")
 
+
+# Affichage
+print("\nListe des codes de Huffman")
+print (codes)
