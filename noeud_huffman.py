@@ -3,7 +3,7 @@ import os
 import unicodedata as uni
 import noeud_binaire as nb
 
-class Huffman(nb):
+class Huffman(nb.NoeudBinaire):
 
     def __init__(self, s, es, gauche, droit):
         """(s) est la chaîne de caratère et (es) est 
@@ -15,14 +15,11 @@ class Huffman(nb):
         self.s = s
         self.es = es
 
-        def compter_lettres(texte):
-            compteur_lettres = {}
+    @staticmethod
+    def compter_lettres(texte):
+        compteur_lettres = {}
 
-            for i in texte:
-                compteur_lettres[i] = compteur_lettres.get(i, 0) + 1
+        for i in texte:
+            compteur_lettres[i] = compteur_lettres.get(i, 0) + 1
 
-            return compteur_lettres
-
-
-        
-       
+        return compteur_lettres
