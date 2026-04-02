@@ -23,3 +23,6 @@ class Huffman(nb.NoeudBinaire):
             compteur_lettres[i] = compteur_lettres.get(i, 0) + 1
 
         return compteur_lettres
+
+    def Arbre_huffman(self,s,es,gauche,droit):
+
