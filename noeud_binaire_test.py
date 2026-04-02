@@ -12,4 +12,6 @@ b = nb.NoeudBinaire('B', c, d)
 # Arbre de valeur 'A', sous-arbre gauche : b. Sous-arbre droit : e.
 a = nb.NoeudBinaire('A', b, e)
 
-print(a.hauteur()) #La hauteur de l'arbre ayant pour origine a
+print("Nombre de noeuds présent dans l'arbre:", nb.NoeudBinaire.nb_NoeudBinaire)
+print("Hauteur de l'arbre:", a.hauteur()) # La hauteur de l'arbre ayant pour origine A
+print(a) # Affichage de la forme de l'arbre
