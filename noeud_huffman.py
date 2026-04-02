@@ -5,7 +5,7 @@ import noeud_binaire as nb
 
 class Huffman(nb.NoeudBinaire):
 
-    def __init__(self, s, es, gauche, droit):
+    def __init__(self, s, es, gauche=None, droit=None):
         """(s) est la chaîne de caractère et (es) est
         le poids de la concaténation (s), 
         - valeur devient un tuple 
@@ -51,3 +51,17 @@ class Huffman(nb.NoeudBinaire):
         for c in text:
             res += format(ord(c), "08b")
         return res
+
+    def codes_huffman(self, code="", dico={}):
+        # Si c'est une feuille (pas d'enfants)
+        if self.get_gauche()   is None and self.get_droit()  is None:
+            dico[self.s] = code
+        else:
+            # Aller à gauche -> on ajoute 0
+            if self.get_gauche()  :
+                self.get_gauche().codes_huffman(code + "0", dico)
+            # Aller à droite -> on ajoute 1
+            if self.get_droit() :
+                self.get_droit().codes_huffman(code + "1", dico)
+
+        return dico
