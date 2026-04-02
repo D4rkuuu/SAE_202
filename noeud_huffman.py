@@ -53,15 +53,6 @@ class Huffman(nb.NoeudBinaire):
     def __repr__(self):
         return f"({self.s}, {self.es})"
 
-    #def arbre_huffman(self,noeuds):
-
-    @staticmethod
-    def ascii_vers_base2(text):
-        res = ""
-        for c in text:
-            res += format(ord(c), "08b")
-        return res
-
     def codes_huffman(self, code="", dico={}):
         # Si c'est une feuille (pas d'enfants)
         if self.get_gauche()   is None and self.get_droit()  is None:
