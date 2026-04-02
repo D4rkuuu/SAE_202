@@ -43,4 +43,24 @@ class Huffman(nb.NoeudBinaire):
     def __repr__(self):
         return f"({self.s}, {self.es})"
 
+    @staticmethod
+    def generer_codes(noeud, code="", codes=None):
+        if codes is None:
+            codes = {}
+
+        # feuille
+        if noeud.get_gauche() is None and noeud.get_droit() is None:
+            codes[noeud.get_valeur()[0]] = code
+            return codes
+
+        # gauche = 0
+        if noeud.get_gauche():
+            Huffman.generer_codes(noeud.get_gauche(), code + "0", codes)
+
+        # droite = 1
+        if noeud.get_droit():
+            Huffman.generer_codes(noeud.get_droit(), code + "1", codes)
+
+        return codes
+
     #def arbre_huffman(self,noeuds):

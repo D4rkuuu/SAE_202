@@ -1,6 +1,6 @@
 import noeud_huffman as nh
 
-texte = "bonjourbonsoir"
+texte = "jsp euhhhh"
 
 resultat = nh.Huffman.compter_lettres(texte)
 
@@ -15,4 +15,8 @@ arbre = nh.Huffman.lettres_noeuds(noeuds)
 
 print(noeuds)
 print(arbre)
+
+code = nh.Huffman.generer_codes(arbre)
+
+print(code)
 
