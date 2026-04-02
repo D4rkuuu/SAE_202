@@ -24,5 +24,12 @@ class Huffman(nb.NoeudBinaire):
 
         return compteur_lettres
 
-    def Arbre_huffman(self,s,es,gauche,droit):
+    #def Arbre_huffman(self,s,es,gauche,droit):
+
+    @staticmethod
+    def ascii_vers_base2(text):
+        res = ""
+        for c in text:
+            res += format(ord(c), "08b")
+        return res
 
