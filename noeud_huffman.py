@@ -5,7 +5,7 @@ import noeud_binaire as nb
 
 class Huffman(nb.NoeudBinaire):
 
-    def __init__(self, s, es, gauche, droit):
+    def __init__(self, s, es, gauche=None, droit=None):
         """(s) est la chaîne de caractère et (es) est
         le poids de la concaténation (s), 
         - valeur devient un tuple 
@@ -14,6 +14,16 @@ class Huffman(nb.NoeudBinaire):
         super().__init__((s,es), gauche, droit)
         self.s = s
         self.es = es
+
+    def get_s(self):
+        return self.s
+    def get_es(self):
+        return self.es
+    def set_s(self, s):
+        self.s = s
+    def set_es(self, es):
+        self.es = es
+
 
     @staticmethod
     def compter_lettres(texte):
@@ -44,23 +54,22 @@ class Huffman(nb.NoeudBinaire):
         return f"({self.s}, {self.es})"
 
     @staticmethod
-    def generer_codes(noeud, code="", codes=None):
-        if codes is None:
-            codes = {}
+    def ascii_vers_base2(text):
+        res = ""
+        for c in text:
+            res += format(ord(c), "08b")
+        return res
 
-        # feuille
-        if noeud.get_gauche() is None and noeud.get_droit() is None:
-            codes[noeud.get_valeur()[0]] = code
-            return codes
+    def codes_huffman(self, code="", dico={}):
+        # Si c'est une feuille (pas d'enfants)
+        if self.get_gauche()   is None and self.get_droit()  is None:
+            dico[self.s] = code
+        else:
+            # Aller à gauche -> on ajoute 0
+            if self.get_gauche()  :
+                self.get_gauche().codes_huffman(code + "0", dico)
+            # Aller à droite -> on ajoute 1
+            if self.get_droit() :
+                self.get_droit().codes_huffman(code + "1", dico)
 
-        # gauche = 0
-        if noeud.get_gauche():
-            Huffman.generer_codes(noeud.get_gauche(), code + "0", codes)
-
-        # droite = 1
-        if noeud.get_droit():
-            Huffman.generer_codes(noeud.get_droit(), code + "1", codes)
-
-        return codes
-
-    #def arbre_huffman(self,noeuds):
+        return dico

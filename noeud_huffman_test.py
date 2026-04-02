@@ -1,22 +1,19 @@
 import noeud_huffman as nh
 
-texte = "jsp euhhhh"
+
+texte = "Ô rage ! ô désespoir ! ô vieillesse ennemie ! N’ai-je donc tant vécu que pour cette infamie ? Le Cid, Corneille Acte I, scène 4"
 
 resultat = nh.Huffman.compter_lettres(texte)
 
 print(resultat)
 
-noeuds = []
+# Pipeline complet
+compteur = nh.Huffman.compter_lettres(texte)
+noeuds = [nh.Huffman(lettre, freq) for lettre, freq in compteur.items()]
+racine = nh.Huffman.lettres_noeuds(noeuds)
 
-for lettre, poids in resultat.items():
-    noeuds.append(nh.Huffman(lettre, poids, None, None))
-
-arbre = nh.Huffman.lettres_noeuds(noeuds)
-
-print(noeuds)
-print(arbre)
-
-code = nh.Huffman.generer_codes(arbre)
-
-print(code)
+# Générer les codes
+codes = racine.codes_huffman()
+for lettre, code in codes.items():
+    print(f"'{lettre}' -> {code}")
 
