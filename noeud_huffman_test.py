@@ -1,11 +1,21 @@
 import noeud_huffman as nh
 
 
-texte = "Ô rage ! ô désespoir ! ô vieillesse ennemie ! N’ai-je donc tant vécu que pour cette infamie ? Le Cid, Corneille Acte I, scène 4"
+texte = "Ôrage ! ô désespoir ! ô vieillesse ennemie ! N’ai-je donc tant vécu que pour cette infamie ? Le Cid, Corneille Acte I, scène 4"
 
 resultat = nh.Huffman.compter_lettres(texte)
 
 print(resultat)
+
+noeud = []
+
+for lettre, poids in resultat.items():
+    noeud.append(nh.Huffman(lettre, poids, None, None))
+
+arbre = nh.Huffman.lettres_noeuds(noeud)
+
+print(noeud)
+print(arbre)
 
 # Pipeline complet
 compteur = nh.Huffman.compter_lettres(texte)
