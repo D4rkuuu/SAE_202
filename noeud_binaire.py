@@ -54,7 +54,7 @@ class NoeudBinaire:
         return False
     def feuille(self):
         """Renvoi True si l'arbre est une feuille"""
-        if self.__gauche and self.__droit is None:
+        if self.__gauche is None and self.__droit is None:
             return True
         return False
     def arbre_vide(self):
