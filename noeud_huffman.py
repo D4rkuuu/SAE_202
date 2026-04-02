@@ -53,16 +53,25 @@ class Huffman(nb.NoeudBinaire):
     def __repr__(self):
         return f"({self.s}, {self.es})"
 
-    def codes_huffman(self, code="", dico={}):
-        # Si c'est une feuille (pas d'enfants)
-        if self.get_gauche()   is None and self.get_droit()  is None:
-            dico[self.s] = code
-        else:
-            # Aller à gauche -> on ajoute 0
-            if self.get_gauche()  :
-                self.get_gauche().codes_huffman(code + "0", dico)
-            # Aller à droite -> on ajoute 1
-            if self.get_droit() :
-                self.get_droit().codes_huffman(code + "1", dico)
+    @staticmethod
+    def ascii_vers_base2(text):
+        res = ""
+        for c in text:
+            res += format(ord(c), "08b")
+        return res
 
-        return dico
+    def codes_huffman(self, code="", liste=None):
+        if liste is None:
+            liste = []
+
+        # feuille
+        if self.get_gauche() is None and self.get_droit() is None:
+            liste.append((self.s, code))
+        else:
+            if self.get_gauche():
+                self.get_gauche().codes_huffman(code + "0", liste)
+
+            if self.get_droit():
+                self.get_droit().codes_huffman(code + "1", liste)
+
+        return liste
