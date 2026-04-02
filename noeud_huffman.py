@@ -32,10 +32,14 @@ class Huffman(nb.NoeudBinaire):
         for i in texte:
             compteur_lettres[i] = compteur_lettres.get(i, 0) + 1
 
-        return compteur_lettres
+        return list(compteur_lettres.items())
 
     @staticmethod
-    def lettres_noeuds(noeuds):
+    def lettres_noeuds(liste_tuples):
+        noeuds = []
+        for lettre, poids in liste_tuples:
+            noeuds.append(Huffman(lettre, poids, None, None)) # Création de feuille
+
         while len(noeuds) > 1:
             noeuds.sort(key=lambda x: x.es)
 
@@ -60,18 +64,18 @@ class Huffman(nb.NoeudBinaire):
             res += format(ord(c), "08b")
         return res
 
-    def codes_huffman(self, code="", liste=None):
-        if liste is None:
-            liste = []
+    def codes_huffman(self, code="", liste_codes=None):
+        if liste_codes is None:
+            liste_codes = [] # Crée une liste vide pour éviter que les résultats s'accumulent sur plusieurs arbres
 
-        # feuille
-        if self.get_gauche() is None and self.get_droit() is None:
-            liste.append((self.s, code))
+        if self.feuille():
+            liste_codes.append((self.s, code))
         else:
-            if self.get_gauche():
-                self.get_gauche().codes_huffman(code + "0", liste)
+            # Aller à gauche -> on ajoute 0
+            if self.get_gauche()  :
+                self.get_gauche().codes_huffman(code + "0", liste_codes)
+            # Aller à droite -> on ajoute 1
+            if self.get_droit() :
+                self.get_droit().codes_huffman(code + "1", liste_codes)
 
-            if self.get_droit():
-                self.get_droit().codes_huffman(code + "1", liste)
-
-        return liste
+        return liste_codes
