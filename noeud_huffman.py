@@ -3,26 +3,26 @@ import os
 import unicodedata as uni
 import noeud_binaire as nb
 
-class Huffman(nb):
+class Huffman(nb.NoeudBinaire):
 
     def __init__(self, s, es, gauche, droit):
-        """(s) est la chaîne de caratère et (es) est 
+        """(s) est la chaîne de caractère et (es) est
         le poids de la concaténation (s), 
         - valeur devient un tuple 
         - (s) position 0 plus le calcule de la concaténation 
-        - (es) position 1 avec le calcule du poids totale."""
+        - (es) position 1 avec le calcule du poids total."""
         super().__init__((s,es), gauche, droit)
         self.s = s
         self.es = es
 
-        def compter_lettres(texte):
-            compteur_lettres = {}
+    @staticmethod
+    def compter_lettres(texte):
+        compteur_lettres = {}
 
-            for i in texte:
-                compteur_lettres[i] = compteur_lettres.get(i, 0) + 1
+        for i in texte:
+            compteur_lettres[i] = compteur_lettres.get(i, 0) + 1
 
-            return compteur_lettres
+        return compteur_lettres
 
+    def Arbre_huffman(self,s,es,gauche,droit):
 
-        
-       
