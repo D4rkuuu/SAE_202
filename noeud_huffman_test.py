@@ -13,6 +13,7 @@ print (racine)
 # Génère les codes pour l'encodage
 codes = racine.codes_huffman()
 
+print(nh.Huffman.ascii_vers_base2(texte))
 
 # Affichage
 print("\nListe des codes de Huffman")
