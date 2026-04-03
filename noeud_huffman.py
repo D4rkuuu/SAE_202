@@ -4,6 +4,7 @@ import unicodedata as uni
 import noeud_binaire as nb
 
 class Huffman(nb.NoeudBinaire):
+    nb_NoeudHuffman = 0
 
     def __init__(self, s, es, gauche=None, droit=None):
         """(s) est la chaîne de caractère et (es) est
@@ -14,6 +15,7 @@ class Huffman(nb.NoeudBinaire):
         super().__init__((s,es), gauche, droit)
         self.s = s
         self.es = es
+        Huffman.nb_NoeudHuffman += 1
 
     def get_s(self):
         return self.s
