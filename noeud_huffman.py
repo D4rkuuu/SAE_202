@@ -101,8 +101,3 @@ class Huffman(nb.NoeudBinaire):
             if unicodedata.category(c) != 'Mn'
         )
         return texte_sans_accents
-
-
-
-
-

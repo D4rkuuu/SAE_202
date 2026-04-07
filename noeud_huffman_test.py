@@ -28,7 +28,7 @@ print("\n\n-----------------------------------Test fonctionnalités noeud huffma
 
 import noeud_huffman as nh
 
-texte = Huffman.enlever_accents("Attention à la marche en déscendant du train")
+texte = Huffman.enlever_accents("éàè")
 
 print(f"Texte à encoder : {texte}")
 
