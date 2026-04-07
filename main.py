@@ -1,4 +1,4 @@
-from SAE_202.noeud_huffman import Huffman
+from noeud_huffman import Huffman
 
 print("-----------------------------------Test fonctionnalités noeud binaire")
 import noeud_binaire as nb
@@ -47,3 +47,5 @@ codes = arbreHuffman.codes_huffman()
 
 # Affichage des codes
 print("\nListe des codes de Huffman du texte:", codes)
+
+print(Huffman.texte_to_code(texte,codes))
