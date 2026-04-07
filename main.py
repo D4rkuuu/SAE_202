@@ -25,7 +25,7 @@ for f in os.listdir(input_dir):
 
         # Construction de l'arbre de Huffman et compression du texte
         print("Construction de l'arbre de Huffman. Compression du texte.")
-            # Construit l'abre de Huffman le stocke dans la variable arbreHuffman
+            # Construit l'arbre de Huffman le stocke dans la variable arbreHuffman
         arbreHuffman = nh.Huffman.lettres_noeuds(liste_tuples)
             # Génère les codes qui seront utilisés pour l'encodage
         codes = arbreHuffman.codes_huffman()

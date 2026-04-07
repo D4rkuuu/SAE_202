@@ -17,8 +17,11 @@ for f in os.listdir(input_dir):
         encodageASCII = nh.Huffman.ascii_vers_base2(content)
         print("Encodage du texte ASCII OK.")
 
+        # Supression des accents du texte
+        new_content = nh.Huffman.enlever_accents(content)
+
         # Calcul de la fréquence d'apparition de chaque caractère du texte
-        liste_tuples = nh.Huffman.compter_lettres(content)
+        liste_tuples = nh.Huffman.compter_lettres(new_content)
 
         # Construction de l'arbre de Huffman et compression du texte
         print("Construction de l'arbre de Huffman. Compression du texte.")
@@ -29,9 +32,9 @@ for f in os.listdir(input_dir):
         print("Construction de l'arbre OK.         Compression OK.")
 
         # Compression du fichier txt
-        texte_compresse = nh.Huffman.texte_to_code(content, codes)
-        print("Taille initiale :     ", len(content) * 8, "bits")
+        texte_compresse = nh.Huffman.texte_to_code(new_content, codes)
+        print("Taille initiale :     ", len(new_content) * 8, "bits")
         print("Taille compressée :   ", len(texte_compresse), "bits")
             # Calcul le taux de compression par rapport à la taille initiale du texte
-        taux = (1 - len(texte_compresse) / (len(content) * 8)) * 100
+        taux = (1 - len(texte_compresse) / (len(new_content) * 8)) * 100
         print(f"Taux de compression :  {taux:.2f}%")
