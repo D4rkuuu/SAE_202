@@ -81,3 +81,16 @@ class Huffman(nb.NoeudBinaire):
                 self.get_droit().codes_huffman(code + "1", liste_codes)
 
         return liste_codes
+
+    @staticmethod
+    def texte_to_code(texte,code_huffman):
+        new_texte = ""
+        for i in texte:
+            for a,b in code_huffman:
+                if i == a:
+                    new_texte += b
+        return new_texte
+
+
+
+
