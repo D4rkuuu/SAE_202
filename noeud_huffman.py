@@ -63,10 +63,8 @@ class Huffman(nb.NoeudBinaire):
 
     @staticmethod
     def ascii_vers_base2(text):
-        res = ""
-        for c in text:
-            res += format(ord(c), "08b")
-        return res
+        liste_bits = [format(ord(c), "08b") for c in text]
+        return "".join(liste_bits) # Colle tout ensemble sans aucun espace
 
     def codes_huffman(self, code="", liste_codes=None):
         if liste_codes is None:
@@ -85,13 +83,10 @@ class Huffman(nb.NoeudBinaire):
         return liste_codes
 
     @staticmethod
-    def texte_to_code(texte,code_huffman):
-        new_texte = ""
-        for i in texte:
-            for a,b in code_huffman:
-                if i == a:
-                    new_texte += b
-        return new_texte
+    def texte_to_code(texte, liste_codes_huffman):
+        dico_codes = dict(liste_codes_huffman) #transforme liste_code_huffman en dictionnaire pour que ce soit bien plus rapide
+        liste_binaire = [dico_codes[caractere] for caractere in texte]
+        return "".join(liste_binaire) # Colle tout ensemble sans aucun espace
 
     @staticmethod
     def enlever_accents(texte):
