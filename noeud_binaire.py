@@ -58,13 +58,16 @@ class NoeudBinaire:
             return True
         return False
     def arbre_vide(self):
-        """Renvoi True si l'arbre tout les attributs de la feuille vaut None"""
-        if self.__valeur and self.__gauche and self.__droit is  None:
+        """Renvoi True si tout les attributs de la feuille = None"""
+        if self.__valeur is None and self.__gauche is None and self.__droit is  None:
             return True
         return False
+
     def admet_un_sa(self):
-        """Renvoi True si l'arbre admet seulement un sous-arbre"""
-        if self.__droit is not None or self.__gauche is not None:
+        """Renvoie True si l'arbre admet strictement un seul sous-arbre"""
+        if self.__gauche is not None and self.__droit is None:      # Sous-arbre gauche existe, mais pas le droit
+            return True
+        if self.__droit is not None and self.__gauche is None:      # Sous-arbre droit existe, mais pas le gauche
             return True
         return False
 
@@ -75,14 +78,14 @@ class NoeudBinaire:
         """
         if self.arbre_vide():
             return 0
-        if self.__gauche is not None:  # Si le sous arbre gauche n'est pas vide
+        if self.__gauche is not None:        # Si le sous arbre gauche n'est pas vide
             h_gauche = self.__gauche.hauteur()  # Alors, réutiliser la méthode hauteur sur le sous arbre gauche
         else:
-            h_gauche = 1       # Vaut 0 si c'est une feuille
+            h_gauche = 0              # Vaut 0 si c'est une feuille
         if self.__droit is not None:  # Si le sous arbre droit n'est pas vide
             h_droit = self.__droit.hauteur()  # Alors, réutiliser la méthode hauteur sur le sous arbre droit
         else:
-            h_droit = 1         # Vaut 0 si c'est une feuille
+            h_droit = 0         # Vaut 0 si c'est une feuille
         return 1 + max(h_gauche,h_droit) # Rajoute 1(la racine) à la hauteur du sous arbre ayant la plus grande hauteur"
 
     def __str__(self):
