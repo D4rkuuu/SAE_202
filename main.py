@@ -1,7 +1,10 @@
-from SAE_202.noeud_huffman import Huffman
+
+#from SAE_202.noeud_huffman import Huffman
 
 print("-----------------------------------Test fonctionnalités noeud binaire")
 import noeud_binaire as nb
+import os
+import sys
 
 g = nb.NoeudBinaire('G', None, None) # Arbre de valeur 'G', sans sous-arbre (feuille)
 # Arbre de valeur 'F'. Sous-arbre gauche : g. Pas sous-arbre droit.
@@ -26,7 +29,11 @@ print("\n\n-----------------------------------Test fonctionnalités noeud huffma
 
 import noeud_huffman as nh
 
-texte = "bonjourbonsoir"
+input_dir = sys.argv[1] # Dossier contenant les *.txt
+for f in os.listdir(input_dir): # Pour chaque fichier contenu dans input_dir
+    if f.endswith('.txt'):
+    f_path = os.path.join(input_dir, f) # Chemin d'accès vers le fichier courant
+    with open(f_path, 'r', encoding='utf-8') as file:
 
 print("------------Étape 1 — Effectif de chaque caractère du texte")
 liste_tuples = nh.Huffman.compter_lettres(texte) # Génère les tuples (Caractère, effectif)
