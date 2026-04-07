@@ -1,5 +1,7 @@
 import sys
 import os
+import unicodedata
+
 import unicodedata as uni
 import noeud_binaire as nb
 
@@ -90,6 +92,16 @@ class Huffman(nb.NoeudBinaire):
                 if i == a:
                     new_texte += b
         return new_texte
+
+    @staticmethod
+    def enlever_accents(texte):
+        texte_normalise = unicodedata.normalize('NFD', texte)
+        texte_sans_accents = ''.join(
+            c for c in texte_normalise
+            if unicodedata.category(c) != 'Mn'
+        )
+        return texte_sans_accents
+
 
 
 

@@ -26,9 +26,11 @@ print("\n\n-----------------------------------Test fonctionnalités noeud huffma
 
 import noeud_huffman as nh
 
-texte = "bonjourbonsoir"
+texte = Huffman.enlever_accents("Attention à la marche en déscendant du train")
 
-print("------------Étape 1 — Effectif de chaque caractère du texte")
+print(f"Texte à encoder : {texte}")
+
+print("\n------------Étape 1 — Effectif de chaque caractère du texte")
 liste_tuples = nh.Huffman.compter_lettres(texte) # Génère les tuples (Caractère, effectif)
 liste_tuples_triee = sorted(liste_tuples, key=lambda x: x[1], reverse=True) # Trie la liste dans l'ordre décroissant des effectifs
 
@@ -48,4 +50,6 @@ codes = arbreHuffman.codes_huffman()
 # Affichage des codes
 print("\nListe des codes de Huffman du texte:", codes)
 
-print(Huffman.texte_to_code(texte,codes))
+# Affichage du texte en base 2 et encodé
+print(f"Texte en base 2  : {Huffman.ascii_vers_base2(texte)}")
+print(f"Encodage Huffman : {Huffman.texte_to_code(texte,codes)}")
