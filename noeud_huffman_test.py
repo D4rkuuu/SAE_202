@@ -1,4 +1,6 @@
 from noeud_huffman import Huffman
+import os
+import sys
 
 print("-----------------------------------Test fonctionnalités noeud binaire")
 import noeud_binaire as nb
