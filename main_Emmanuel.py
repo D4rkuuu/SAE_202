@@ -1,8 +1,10 @@
 import noeud_huffman as nh
 import os
 import sys
+import csv
 
 input_dir = sys.argv[1]  # Dossier contenant les *.txt
+output_csv = "resultats.csv"
 
 for f in os.listdir(input_dir):
     if f.endswith('.txt'):
@@ -33,8 +35,24 @@ for f in os.listdir(input_dir):
 
         # Compression du fichier txt
         texte_compresse = nh.Huffman.texte_to_code(new_content, codes)
-        print("Taille initiale :     ", len(new_content) * 8, "bits")
-        print("Taille compressée :   ", len(texte_compresse), "bits")
+        taille_initiale = len(new_content) * 8
+        taille_compresse = len(texte_compresse)
+        print("Taille initiale :     ", taille_initiale, "bits")
+        print("Taille compressée :   ", taille_compresse, "bits")
             # Calcul le taux de compression par rapport à la taille initiale du texte
-        taux = (1 - len(texte_compresse) / (len(new_content) * 8)) * 100
+        taux = (1 - taille_compresse / taille_initiale) * 100
         print(f"Taux de compression :  {taux:.2f}%")
+
+
+        #--- CSV ---
+        fichier_existe = os.path.isfile(output_csv)
+
+        with open(output_csv, mode="a", newline="", encoding="utf-8") as fichier:
+            writer = csv.writer(fichier, delimiter=';')
+
+            if not fichier_existe:
+                writer.writerow(["Texte", "Taille initiale", "Taille compressée", "Taux de compression"])
+
+            writer.writerow([f, f"{taille_initiale} bits", f"{taille_compresse} bits", f"{round(taux, 2)}%"])
+
+        print(f"Résultat enregistré dans le CSV: {f}, {taille_initiale} bits, {taille_compresse} bits, {round(taux, 2)}%")
