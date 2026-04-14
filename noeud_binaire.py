@@ -113,3 +113,13 @@ class NoeudBinaire:
             affiche += "\n" + tab + "|-->"  # Garde un espace vide si seul le côté gauche existe
 
         return affiche
+
+    def parcoursLargeur(self):
+        f = [self]
+        while f != []:
+            noeud_actuelle = f.pop(0)
+            print(noeud_actuelle.get_valeur())
+            if noeud_actuelle.admet_sag():
+                f.append(noeud_actuelle.get_gauche())
+            if noeud_actuelle.admet_sad():
+                f.append(noeud_actuelle.get_droit())
