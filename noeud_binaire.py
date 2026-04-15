@@ -123,3 +123,14 @@ class NoeudBinaire:
                 f.append(noeud_actuelle.get_gauche())
             if noeud_actuelle.admet_sad():
                 f.append(noeud_actuelle.get_droit())
+
+    def parcoursInfixe(self):
+        p = []
+        noeud_actuelle = self
+        while noeud_actuelle is not None or p != []:
+            while noeud_actuelle is not None:
+                p.append(noeud_actuelle)
+                noeud_actuelle = noeud_actuelle.get_gauche()
+            noeud_actuelle = p.pop()
+            print(noeud_actuelle.get_valeur())
+            noeud_actuelle = noeud_actuelle.get_droit()

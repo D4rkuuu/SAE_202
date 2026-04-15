@@ -1,3 +1,8 @@
+import sys
+import os
+
+dossier_parent = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+sys.path.insert(0, dossier_parent)
 import noeud_binaire as nb
 
 g = nb.NoeudBinaire('G', None, None) # Arbre de valeur 'G', sans sous-arbre (feuille)
@@ -17,3 +22,5 @@ print("Hauteur de l'arbre:", a.hauteur()) # La hauteur de l'arbre ayant pour ori
 print(a) # Affichage de la forme de l'arbre
 print("Parcours en largeur :")
 a.parcoursLargeur()
+print("Parcours infixe :")
+a.parcoursInfixe()
