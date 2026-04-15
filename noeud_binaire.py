@@ -134,3 +134,10 @@ class NoeudBinaire:
             noeud_actuelle = p.pop()
             print(noeud_actuelle.get_valeur())
             noeud_actuelle = noeud_actuelle.get_droit()
+
+    def parcoursSuffixe(self):
+        if self.get_gauche() is not None:
+            self.get_gauche().parcoursSuffixe()
+        if self.get_droit() is not None:
+            self.get_droit().parcoursSuffixe()
+        print(self.get_valeur())
