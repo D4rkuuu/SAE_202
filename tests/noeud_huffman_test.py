@@ -1,34 +1,16 @@
-from noeud_huffman import Huffman
-import os
 import sys
+import os
 
-print("-----------------------------------Test fonctionnalités noeud binaire")
-import noeud_binaire as nb
+dossier_parent = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+sys.path.insert(0, dossier_parent)
 
-g = nb.NoeudBinaire('G', None, None) # Arbre de valeur 'G', sans sous-arbre (feuille)
-# Arbre de valeur 'F'. Sous-arbre gauche : g. Pas sous-arbre droit.
-f = nb.NoeudBinaire('F', g, None)
-# Arbre de valeur 'E'. Pas de sous-arbre gauche. Sous-arbre droit : f
-e = nb.NoeudBinaire('E', None, f)
-d = nb.NoeudBinaire('D', None, None) # Arbre de valeur 'D', sans sous-arbres (feuille)
-c = nb.NoeudBinaire('C', None, None) # Arbre de valeur 'C', sans sous-arbres (feuille)
-# Arbre de valeur 'B', sous-arbre gauche : c. Sous-arbre droit : d.
-b = nb.NoeudBinaire('B', c, d)
-# Arbre de valeur 'A', sous-arbre gauche : b. Sous-arbre droit : e.
-a = nb.NoeudBinaire('A', b, e)
-
-print(a) # Affichage de la forme de l'arbre
-print("Nombre de noeuds présent dans l'arbre:", nb.NoeudBinaire.nb_NoeudBinaire)
-print("Hauteur de l'arbre:", a.hauteur()) # La hauteur de l'arbre ayant pour origine A
-
-
-
+import noeud_huffman as nh
+from noeud_huffman import Huffman
 
 print("\n\n-----------------------------------Test fonctionnalités noeud huffman")
 
-import noeud_huffman as nh
 
-texte = Huffman.enlever_accents("éàè")
+texte = Huffman.enlever_accents("Je pense que nous avons enfin fini la SAÉ")
 
 print(f"Texte à encoder : {texte}")
 
@@ -56,3 +38,13 @@ print("\nListe des codes de Huffman du texte:", codes)
 # Affichage du texte en base 2 et encodé
 print(f"Texte en base 2  : {Huffman.ascii_vers_base2(texte)}")
 print(f"Encodage Huffman : {Huffman.texte_to_code(texte,codes)}")
+
+# Différents parcours de l'arbre
+print("\nParcours en largeur :")
+arbreHuffman.parcoursLargeur()
+print("Parcours infixe :")
+arbreHuffman.parcoursInfixe()
+print("Parcours suffixe :")
+arbreHuffman.parcoursSuffixe()
+print("Parcours préfixe :")
+arbreHuffman.parcoursPrefixe()
