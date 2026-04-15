@@ -141,3 +141,10 @@ class NoeudBinaire:
         if self.get_droit() is not None:
             self.get_droit().parcoursSuffixe()
         print(self.get_valeur())
+
+    def parcoursPrefixe(self):
+        print(self.get_valeur())
+        if self.get_gauche() is not None:
+            self.get_gauche().parcoursPrefixe()
+        if self.get_droit() is not None:
+            self.get_droit().parcoursPrefixe()
