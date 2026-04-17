@@ -1,6 +1,5 @@
 *.pdf
 /Docu
-/input
 /.idea
 *__pycache__/
 *.pyc
