@@ -43,6 +43,8 @@ for f in os.listdir(input_dir):
         taux = (1 - taille_compresse / taille_initiale) * 100
         print(f"Taux de compression :  {taux:.2f}%")
 
+        print(liste_tuples)
+        print(codes)
 
         #--- CSV ---
         fichier_existe = os.path.isfile(output_csv)

@@ -1,4 +1,11 @@
 # ReadMe | SAÉ 202 Exploration algorithmique d’un problème 
+
+## Accès GitHub
+
+### https://github.com/D4rkuuu/SAE_202
+
+---
+
 ## Compression de texte avec l'algorithme de Huffman
 
 ## Description
